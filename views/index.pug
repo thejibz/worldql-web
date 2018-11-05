@@ -1,0 +1,52 @@
+html
+  head
+    title= title
+  body
+    h1= message
+    form(method='POST' action='/setup' enctype='application/x-www-form-urlencoded')
+        textarea(name='gqlApis' cols='200' rows='40').
+            [
+                {
+                    "schema": { "url": "https://raw.githubusercontent.com/thejibz/openapi-directory/master/APIs/twitter.com/1.1/swagger.yaml" },
+                    "headers": {
+                        "x-oauth-v1-consumer-key": "",
+                        "x-oauth-v1-consumer-secret": "",
+                        "x-oauth-v1-signature-method": "HMAC-SHA1"
+                    }
+                },
+                {
+                    "schema": { "url": "https://raw.githubusercontent.com/APIs-guru/openapi-directory/master/APIs/weatherbit.io/2.0.0/swagger.yaml" },
+                    "link": {
+                        "inType": "get_current_cities_cities_data_items_weather",
+                        "on": {
+                            "field": {
+                                "name": "search",
+                                "type": "get_v1",
+                                "schemaUrl": "https://raw.githubusercontent.com/APIs-guru/openapi-directory/master/APIs/googleapis.com/customsearch/v1/swagger.yaml",
+                                "query": {
+                                    "name": "get_v1",
+                                    "params": {
+                                        "static": {
+                                            "cx": "",
+                                            "key": "",
+                                            "safe": "active",
+                                            "rights": "cc_publicdomain",
+                                            "searchType": "image",
+                                            "num": 1
+                                        },
+                                        "parent": [{
+                                            "q": "description"
+                                        }],
+                                        "variables": {}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "schema": { "url": "https://raw.githubusercontent.com/APIs-guru/openapi-directory/master/APIs/googleapis.com/customsearch/v1/swagger.yaml" }
+                }
+            ]
+        br
+        button(type='submit') GO
