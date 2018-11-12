@@ -11,10 +11,10 @@ push:
 	git add .
 	git status
 	git commit -m"[sync]"|| true 
-	git push -u origin master
+	git push all master
 
 force_push:
 	git add .
 	git status
 	git commit -m"[sync]"|| true 
-	git push -f -u origin master
+	git push -f all master
